@@ -1,45 +1,125 @@
-AI Systems
-This repo contains a series of projects I am working on in building AI Systems from first principles.
+AI Systems — Learning by Building
 
-Research Focus:
-Agentic AI systems and autonomous intelligent platforms combining LLM reasoning with real-world systems.
+This repository documents my journey of building AI systems from scratch, focusing on practical understanding of LLMs, RAG pipelines, and agent-based architectures.
 
-Overview:
-This repository documents my journey of building AI systems from first principles. The goal is to understand how modern AI applications are designed, structured, and deployed, not just use APIs.
+Instead of just learning theory, each module here is an implementation-first approach to understanding how modern AI systems actually work.
 
-Current Progress:
-1. LLM Text Summarizer
-A Python-based summarization system that generates structured outputs in short, detailed, and technical modes using prompt engineering and LLM APIs.
-Focus: Prompt control and structured output generation.
+----------------------------------------
 
-2. PDF-based RAG System
-A Retrieval-Augmented Generation system that allows querying a PDF document and generates answers strictly grounded in the document content.
-Focus: Embeddings, vector search, retrieval pipelines, and hallucination control.
+Current Progress
 
-Key Learnings:
-1. Understanding how LLMs behave under prompt constraints
-2. Difference between model knowledge and retrieved knowledge
-3. Importance of embeddings for semantic search
-4. How chunking impacts retrieval quality
-5. Designing systems that avoid hallucination
+1) Text Summarizer Script
+A simple LLM-powered summarization tool built using Groq API.
 
-Important Observation:
-During testing, the system correctly responded with "I don't know" when the answer was not present in the document. This confirmed that the model was restricted to retrieved context and did not hallucinate and the rag implementation was successful from 2.).
+What it does:
+- Accepts raw text input from terminal
+- Supports multiple summarization styles (short, detailed, technical)
+- Demonstrates prompt engineering and API integration
 
-Tech Stack:
-Python
-Groq API (LLaMA 3)
-LangChain
-HuggingFace Embeddings (sentence-transformers)
-ChromaDB
-dotenv
+Key Learning:
+Understanding how LLMs behave based on prompt structure.
 
-Repository Structure(Current status quo):
-01_text_summarizer
-02_rag_system
+----------------------------------------
+
+2) RAG (Retrieval-Augmented Generation)
+
+A document-based question-answering system built using:
+- LangChain
+- HuggingFace embeddings
+- Chroma vector database
+
+What it does:
+- Loads PDF documents
+- Splits them into chunks
+- Converts text into embeddings
+- Retrieves relevant context based on query
+- Uses LLM only on retrieved data
+
+Key Highlight:
+The system correctly refuses to answer when the information is not present in the document.
+
+Example:
+When asked something outside the PDF context, the model responded:
+"I don't know"
+
+This confirms:
+- No hallucination
+- Proper retrieval-based grounding
+
+Key Learning:
+Understanding how to control LLM behavior using external knowledge instead of relying on model memory.
+
+----------------------------------------
+
+3) AI Agent (Work in Progress)
+
+A basic agent system that:
+- Takes user input
+- Decides which tool to use (currently summarization)
+- Executes the task using LLM
+
+Current State:
+- Basic tool routing implemented
+- Not yet a full reasoning agent
 
 Next Steps:
-1. Build agent-based systems
-2. Add memory and multi-step reasoning
-3. Expand to multi-document RAG
-4. Integrate AI systems with robotics
+- Add multi-step reasoning (ReAct pattern)
+- Add multiple tools (RAG + summarizer + others)
+- Build decision-making loop
+
+Key Learning:
+Difference between:
+- Simple scripts
+- Tool-based systems
+- True AI agents
+
+----------------------------------------
+
+Tech Stack
+
+- Python
+- Groq API (LLM inference)
+- LangChain
+- HuggingFace Sentence Transformers
+- ChromaDB
+- dotenv
+
+----------------------------------------
+
+Project Philosophy
+
+This repo is not about perfect projects.
+It is about building real systems step by step and understanding:
+
+- How LLMs actually work
+- Where they fail
+- How to control them
+- How to turn them into usable systems
+
+Each folder represents a step toward building production-level AI systems.
+
+----------------------------------------
+
+Upcoming Work
+
+- Multi-tool AI Agent (Planner + Executor)
+- Memory-enabled agents
+- Autonomous workflows
+- Integration with real-world systems
+
+----------------------------------------
+
+Goal
+
+To reach a level where I can build end-to-end AI systems combining:
+
+- LLM reasoning
+- Retrieval systems
+- Agentic workflows
+- Real-world applications
+
+----------------------------------------
+
+Author
+
+Abhishek Reddy T
