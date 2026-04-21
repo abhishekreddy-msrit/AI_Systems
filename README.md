@@ -4,9 +4,12 @@ This repository documents my journey of building AI systems from scratch, focusi
 
 Instead of just learning theory, each module here is an implementation-first approach to understanding how modern AI systems actually work.
 
-----------------------------------------
 
 Current Progress
+
+Recent Update:
+Encountered a model deprecation issue during runtime while using Groq.
+Updated the system to a supported model and validated the fix through runtime testing.
 
 1) Text Summarizer Script
 A simple LLM-powered summarization tool built using Groq API.
@@ -19,7 +22,6 @@ What it does:
 Key Learning:
 Understanding how LLMs behave based on prompt structure.
 
-----------------------------------------
 
 2) RAG (Retrieval-Augmented Generation)
 
@@ -49,18 +51,18 @@ This confirms:
 Key Learning:
 Understanding how to control LLM behavior using external knowledge instead of relying on model memory.
 
-----------------------------------------
 
 3) AI Agent (Work in Progress)
 
 A basic agent system that:
 - Takes user input
-- Decides which tool to use (currently summarization)
-- Executes the task using LLM
+- Uses LLM-based intent planning
+- Routes queries dynamically across summarization, explanation, and research agents
+- Includes a verification step to keep responses grounded in retrieved context
 
 Current State:
-- Basic tool routing implemented
-- Not yet a full reasoning agent
+- Dynamic multi-agent routing implemented
+- Verification flow added for reliability checks
 
 Next Steps:
 - Add multi-step reasoning (ReAct pattern)
@@ -73,18 +75,17 @@ Difference between:
 - Tool-based systems
 - True AI agents
 
-----------------------------------------
 
 Tech Stack
 
 - Python
-- Groq API (LLM inference)
+- Groq API (llama-3.3-70b-versatile)
 - LangChain
 - HuggingFace Sentence Transformers
 - ChromaDB
 - dotenv
 
-----------------------------------------
+
 
 Project Philosophy
 
@@ -98,7 +99,6 @@ It is about building real systems step by step and understanding:
 
 Each folder represents a step toward building production-level AI systems.
 
-----------------------------------------
 
 Upcoming Work
 
@@ -107,7 +107,6 @@ Upcoming Work
 - Autonomous workflows
 - Integration with real-world systems
 
-----------------------------------------
 
 Goal
 
@@ -118,7 +117,6 @@ To reach a level where I can build end-to-end AI systems combining:
 - Agentic workflows
 - Real-world applications
 
-----------------------------------------
 
 Author
 

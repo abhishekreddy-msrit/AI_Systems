@@ -1,79 +1,170 @@
 AI Agent System
 
 Project Overview
-This project is the third stage in the AI_Systems learning path.
-The repository is organized as a step-by-step progression:
+This project represents the third stage in the AI_Systems learning path.
+
+The repository follows a structured progression:
 1. LLM basics
 2. RAG systems
 3. Agent-based systems
 
-This module focuses on a basic tool-using AI agent built with Python and the Groq API.
-It is designed to show how an LLM can route user requests to different tools in a terminal workflow.
+This module begins with a basic tool-using agent and evolves toward a multi-agent orchestration system.
 
-Features
-1. Task classification using an LLM
-2. Tool selection based on user intent
-3. Terminal-based interaction loop
-4. Modular design with separate planner and tools
+The goal is not just to build an agent, but to understand how AI systems transition from simple decision-making scripts to modular, scalable workflows.
 
-How It Works
-Flow: User input -> LLM decision -> Tool execution -> Output
 
-The planner function decides whether the request is a summarization task or a general question.
-If the request is for summarization, the summarizer tool is used.
-If the request is a general question, the answer tool is used.
-The selected tool returns the final response in the terminal.
+
+Basic Agent (Current Implementation)
+
+The current system is implemented in basic_agent.py.
+
+It is a simple LLM-driven agent that:
+- Takes user input from the terminal
+- Uses an LLM to classify the task
+- Selects the appropriate tool
+- Executes the tool and returns the output
+
+Flow:
+User input -> LLM decision -> Tool execution -> Output
+
+Tools implemented:
+1. Summarizer tool
+   - Summarizes input text into structured output
+
+2. Answer tool
+   - Handles general queries using the LLM
+
+The planner (decision function) determines whether the input is:
+- a summarization task
+- or a general question
+
+This forms the foundation of tool-based AI systems.
+
+
+
+Why This Approach Matters
+
+This basic agent demonstrates:
+- how LLMs can act as decision-makers
+- how tools can be modularized
+- how input routing works in practice
+
+However, while functional, this design exposes important limitations.
+
+
+Limitations of the Basic Agent
+
+1. No multi-step reasoning  
+   The agent can only perform one action at a time
+
+2. No workflow understanding  
+   It cannot break down complex tasks into steps
+
+3. Tight coupling  
+   Decision-making and execution are too closely linked
+
+4. Poor scalability  
+   Adding more tools makes the system harder to manage
+
+5. No validation  
+   Outputs are not checked or verified
+
+
+
+Transition to Multi-Agent System
+
+To overcome these limitations, this module is being extended into a multi-agent orchestration system.
+
+Instead of a single agent handling everything, responsibilities are divided across specialized agents.
+
+Planned architecture:
+
+1. Orchestrator Agent
+   - Receives user input
+   - Decides which agents to activate
+   - Manages the workflow
+   - Combines outputs
+
+2. RAG Agent
+   - Retrieves document-based context
+   - Ensures grounded responses
+
+3. Summarizer Agent
+   - Processes long outputs into concise summaries
+
+4. Analysis Agent
+   - Adds reasoning, comparisons, and insights
+
+5. Verifier Agent
+   - Ensures outputs remain grounded and consistent
+
+Flow (target system):
+User input -> Orchestrator -> Specialized agents -> Final response
+
 
 Setup Instructions
-1. Clone the repository.
+
+1. Clone the repository  
    git clone <repo-url>
 
-2. Move into this module.
+2. Navigate to this module  
    cd AI_Systems/3.)agent
 
-3. Install dependencies.
+3. Install dependencies  
    pip install groq python-dotenv
 
-4. Create a .env file in this folder.
+4. Create a .env file  
 
-5. Add your Groq key in .env.
+5. Add your API key  
    GROQ_API_KEY=your_api_key_here
 
-6. Run the agent.
-   python agent.py
+6. Run the current agent  
+   python basic_agent.py
+
 
 Usage
-Start the program and enter a task in the terminal.
+
+Start the program and enter a task.
 
 Example inputs:
-1. summarize this text
-2. explain quantum computing
+- summarize this text
+- explain quantum computing
 
-For summarization, the agent will ask for the text to summarize.
-For general questions, it will answer directly.
+The agent will:
+- classify the request
+- choose the tool
+- return the result
+
 
 Project Structure
-This module lives at:
+
 AI_Systems/3.)agent/
 
-Main files:
-1. agent.py
-2. .env
-3. README.md
+- basic_agent.py        current implementation
+- orchestrator.py       (planned)
+- rag_agent.py          (planned)
+- summarizer_agent.py   (planned)
+- README.md
 
-Current Limitations
-1. No multi-step reasoning
-2. No memory across interactions
-3. Limited tool set
 
-Future Improvements
-1. Multi-step planning with ReAct style execution
-2. Tool chaining for complex tasks
-3. Memory integration for context persistence
-4. RAG integration for document-grounded responses
+Future Direction
+
+This module is actively evolving toward:
+
+- multi-agent orchestration
+- tool chaining across agents
+- workflow-based execution
+- memory integration
+- grounded reasoning using retrieval systems
+
+
 
 Learning Outcome
-This module helps clarify:
-1. The difference between a simple script and an agent
-2. How tool-based execution works in practice
-3. How LLM decision-making can drive task routing
+
+This project clarifies:
+
+1. The difference between scripts and agents  
+2. How LLMs can act as decision layers  
+3. Why single-agent systems fail for complex workflows  
+4. How modular design leads to scalable AI systems  
+5. The need for orchestration in real-world AI applications
